@@ -8,14 +8,14 @@ class Transaction {
 
   deposit(accountBalance, amount, date) {
     this.type = "deposit";
-    this.date = date;
+    this.date = this.dateCheck(date);
     this.openingBalance = accountBalance;
     this.closingBalance = accountBalance + amount;
   }
 
   withdraw(accountBalance, amount, date) {
     this.type = "withdraw";
-    this.date = date;
+    this.date = this.dateCheck(date);
     this.openingBalance = accountBalance;
     this.closingBalance = accountBalance - amount;
   }
