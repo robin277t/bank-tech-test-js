@@ -102,18 +102,20 @@ Class: Statement Printer
 
 ## Test table
 
-*Test Block 1: constructor*
-- 1 - instantiate new Account > expect this.accountBalance === 0 
-- 2 - instantiate new Account > expect this.transactionLog === [] && this.transactionLog.length === 0
-- 3 - instantiate new Account > expect instructions var (that is console.logged) === (...long string value here...)
-
-*Test Block 2: deposit and withdraw*
+*Test Block 1: Transaction class deposit and withdraw functions*
 before each instantiate new Account--
 - 4 - deposit 100 > expect this.accountBalance === 100
 - 5 - deposit 100 and then 600.20 > expect this.accountBalance === 700.20
 - 6 - withdraw 100 > expect this.accountBalance === -100
 - 7 - withdraw 250 and then 110.50 > expect this.accountBalance === -360.50
 - 8 - deposit 2000 and then withdraw 1200 > expect this.accountBalance === 800
+
+*Test Block 1: constructor*
+- 1 - instantiate new Account > expect this.accountBalance === 0 
+- 2 - instantiate new Account > expect this.transactionLog === [] && this.transactionLog.length === 0
+- 3 - instantiate new Account > expect instructions var (that is console.logged) === (...long string value here...)
+
+
 
 *Test Block 3: log records*
 before each instantiate new Account--
