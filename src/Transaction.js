@@ -1,32 +1,46 @@
 class Transaction {
-  constructor() {
+  constructor(transactionType, accountBalance, amount, date) {
+    this.openingBalance = accountBalance;
+    this.verifiedDate = this.#dateCheck(date);
+    this.verifiedAmount = this.#amountCheck(amount);
     this.type = null;
-    this.date = null;
-    this.openingBalance = null;
     this.closingBalance = null;
+
+    if (this.verifiedAmount) {
+      if (transactionType === "deposit") {
+        this.#deposit(this.verifiedAmount);
+      } else if (transactionType === "withdraw") {
+        this.#withdraw(this.verifiedAmount);
+      }
+    }
   }
 
-  deposit(accountBalance, amount, date) {
+  #deposit(calc_amount) {
     this.type = "deposit";
-    this.date = this.dateCheck(date);
-    this.openingBalance = accountBalance;
-    this.closingBalance = accountBalance + amount;
+    this.closingBalance = this.openingBalance + calc_amount;
   }
 
-  withdraw(accountBalance, amount, date) {
+  #withdraw(calc_amount) {
     this.type = "withdraw";
-    this.date = this.dateCheck(date);
-    this.openingBalance = accountBalance;
-    this.closingBalance = accountBalance - amount;
+    this.closingBalance = this.openingBalance - calc_amount;
   }
 
-  dateCheck(date) {
+  #amountCheck(amount) {
+    if (amount != 0 && typeof amount == "number") {
+      return amount;
+    } else {
+      return null;
+    }
+  }
+
+  #dateCheck(date) {
     const todayDate = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
     const validDateFormat =
       /^\d{4}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/.test(date);
-    if (validDateFormat === false
-    ) {
-      console.log("date input is wrongly formatted or missing, reverting to today's date");
+    if (validDateFormat === false) {
+      console.log(
+        "date input is wrongly formatted or missing, reverting to today's date"
+      );
       return todayDate;
     } else {
       return date;
@@ -34,4 +48,4 @@ class Transaction {
   }
 }
 
-module.exports = Transaction
+module.exports = Transaction;

@@ -48,7 +48,7 @@ date || credit || debit || balance
 ### TODO: In your terminal in the bank-test directory, type 'jest --coverage' You should expect xx passing tests and xx% coverage
 
 ## Notes
-- Numerical input and validation: This app requires that input amounts for deposit and withdraw are valid numbers, strings containing numbers (eg "500") are not acceptable. App will round to 2 decimal places when logging all transactions and updating balances. 
+- Numerical input and validation: This app requires that input amounts for deposit and withdraw are valid numbers, strings containing numbers (eg "500") are not acceptable. App will round to 2 decimal places when logging all transactions and updating balances. Amounts entered for deposit or withdraw must not be 0.
 - Date handling: It is not defined but my assumption from the 'Acceptance criteria' given is that date of transaction should be able to be input manually with the method calls, rather than purely timestamped on execution. The functions deposit and withdraw can be called with a date, or in the absense of a date will default to taking a current timestamp.
 - Negative numbers: Whilst out of keeping with how real-world bank accounts work, this app allows negative balances on the account and repeated/unlimited withdrawals, as managing such situations is not in the requirements at present. 
 - Usage instructions: requirement is for using with a REPL, and therefore run by someone with basic programming knowledge, and therefore I have deemed it unneccesary to present the app instructions repeatedly on the console, preferring just once upon initialization. However, I have left the code so that repeats can be implemented simply, by adding 'console.log(this.instructions)' where desired in the program.
