@@ -8,19 +8,19 @@ class Transaction {
 
     if (this.verifiedAmount) {
       if (transactionType === "deposit") {
-        this.#deposit(this.verifiedAmount);
+        this.#calc_deposit(this.verifiedAmount);
       } else if (transactionType === "withdraw") {
-        this.#withdraw(this.verifiedAmount);
+        this.#calc_withdraw(this.verifiedAmount);
       }
     }
   }
 
-  #deposit(calc_amount) {
+  #calc_deposit(calc_amount) {
     this.type = "deposit";
     this.closingBalance = this.openingBalance + calc_amount;
   }
 
-  #withdraw(calc_amount) {
+  #calc_withdraw(calc_amount) {
     this.type = "withdraw";
     this.closingBalance = this.openingBalance - calc_amount;
   }
@@ -29,6 +29,7 @@ class Transaction {
     if (amount != 0 && typeof amount == "number") {
       return amount;
     } else {
+      console.log('amount is either 0 or an invalid format, transaction amount marked as null');
       return null;
     }
   }

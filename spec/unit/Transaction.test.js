@@ -1,6 +1,6 @@
 const Transaction = require("../../src/Transaction");
 
-describe("Block 1: Transaction Class Desposit and Withdraw functions + date check", () => {
+describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amount check", () => {
   beforeEach(() => {
     mockAccountBalance = 1000.0;
     dateToday = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
