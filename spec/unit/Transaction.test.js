@@ -33,6 +33,7 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
       "2022/12/19"
     );
     expect(testTransaction.getClosingBalance()).toBe(799.99);
+    expect(testTransaction.getVerifiedAmount()).toBe(200.01);
   });
   it("4- withdraw 1300.10 (minus figure not allowed)", () => {
     expect(() => {
@@ -51,11 +52,12 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
   });
   it("6- dateCheck function test correct format", () => {
     testTransaction = new Transaction(
-      "deposit",
+      "withdraw",
       mockAccountBalance,
       100.1,
       "2022/12/19"
     );
+    expect(testTransaction.getTransactionType()).toBe("withdraw");
     expect(testTransaction.getVerifiedDate()).toBe("2022/12/19");
   });
   it("7- dateCheck function test 2, incorrect format 1", () => {
@@ -90,15 +92,15 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
       new Transaction("withdraw", mockAccountBalance, 0.0);
     }).toThrow("Invalid amount");
   });
-  it("12- amountCheck function test 3, amount entered is invalid, withdraw function not called", () => {
+  it("12- amountCheck function test 3, amount entered is an array of 1 number", () => {
     expect(() => {
-      new Transaction("withdraw", mockAccountBalance, "hey");
+      new Transaction("withdraw", mockAccountBalance, [100]);
     }).toThrow("Invalid amount");
   });
-  it("13 - check error thrown on invalid transaction type string", () => {
+  it("13 - amountCheck function test 4, amount entered is  less than 0", () => {
     expect(() => {
-      new Transaction("deposittttt", mockAccountBalance, 100.1, "2022/12/19");
-    }).toThrow("Invalid transaction type");
+      new Transaction("deposittttt", mockAccountBalance, -100.1, "2022/12/19");
+    }).toThrow("Invalid amount");
   });
   it("14 - getter for verified amount works", () => {
     testTransaction = new Transaction(
@@ -107,6 +109,6 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
       100.1,
       "2022/12/19"
     );
-    expect(testTransaction.getVerifiedAmount()).toBe(100.1)
-  })
+    expect(testTransaction.getVerifiedAmount()).toBe(100.1);
+  });
 });

@@ -13,11 +13,9 @@ class Transaction {
     this.#closingBalance = null;
 
     if (transactionType === "deposit") {
-      this.#calc_deposit(this.#verifiedAmount);
+      this.#calcDeposit(this.#verifiedAmount);
     } else if (transactionType === "withdraw") {
-      this.#calc_withdraw(this.#verifiedAmount);
-    } else {
-      throw new Error("Invalid transaction type");
+      this.#calcWithdraw(this.#verifiedAmount);
     }
   }
 
@@ -41,21 +39,21 @@ class Transaction {
     return this.#verifiedAmount;
   }
 
-  #calc_deposit(calc_amount) {
+  #calcDeposit(calcAmount) {
     this.#type = "deposit";
-    this.#closingBalance = this.#openingBalance + calc_amount;
+    this.#closingBalance = this.#openingBalance + calcAmount;
   }
 
-  #calc_withdraw(calc_amount) {
+  #calcWithdraw(calcAmount) {
     this.#type = "withdraw";
-    this.#closingBalance = this.#openingBalance - calc_amount;
+    this.#closingBalance = this.#openingBalance - calcAmount;
     if (this.#closingBalance < 0) {
       throw new Error("Insufficient funds");
     }
   }
 
   #amountCheck(amount) {
-    if (amount != 0 && typeof amount == "number") {
+    if (amount > 0 && typeof amount == "number") {
       return amount;
     } else {
       throw new Error("Invalid amount");
