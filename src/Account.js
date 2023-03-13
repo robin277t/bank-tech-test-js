@@ -26,30 +26,27 @@ class Account {
   }
 
   deposit(amount, date) {
-    try {
-      const latestTransaction = new this.#TransactionClass(
-        "deposit",
-        this.#accountBalance,
-        amount,
-        date
-      );
-      this.#transactions.unshift(latestTransaction);
-      this.#accountBalance += amount;
-    } catch (error) {
-      console.error(`Transaction error: ${error.message}`);
-    }
+    this.#performTransaction("deposit", amount, date);
   }
 
   withdraw(amount, date) {
+    this.#performTransaction("withdraw", amount, date);
+  }
+
+  #performTransaction(type, amount, date) {
     try {
       const latestTransaction = new this.#TransactionClass(
-        "withdraw",
+        type,
         this.#accountBalance,
         amount,
         date
       );
       this.#transactions.unshift(latestTransaction);
-      this.#accountBalance -= amount;
+      if (type === "deposit") {
+        this.#accountBalance += amount;
+      } else if (type === "withdraw") {
+        this.#accountBalance -= amount;
+      }
     } catch (error) {
       console.error(`Transaction error: ${error.message}`);
     }

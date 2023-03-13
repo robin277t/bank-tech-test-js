@@ -22,11 +22,11 @@ describe("Block 2: Account class", () => {
     expect(testAccount.getBalance()).toBe(0);
     testAccount.deposit(200.0, "2022/12/19");
     expect(testAccount.getBalance()).toBe(200.0);
-    // Transaction.mockClear();
     testAccount.withdraw(120.5, "2022/12/19");
     expect(testAccount.getBalance()).toBe(79.5);
   });
-  it("4- does not update account balance if withdraw transaction is invalid", () => {
+
+  it("5- does not update account balance if withdraw transaction is invalid", () => {
     Transaction.mockImplementation(() => {
       throw new Error("Invalid amount");
     });
@@ -34,7 +34,7 @@ describe("Block 2: Account class", () => {
     testAccount.deposit(-200.0, "2022/12/19");
     expect(testAccount.getBalance()).toBe(0);
   });
-  it("5- does not update account balance if deposit transaction is invalid", () => {
+  it("6- does not update account balance if deposit transaction is invalid", () => {
     Transaction.mockImplementation(() => {
       throw new Error("Invalid amount");
     });
@@ -42,7 +42,7 @@ describe("Block 2: Account class", () => {
     testAccount.deposit(-200.0, "2022/12/19");
     expect(testAccount.getBalance()).toBe(0);
   });
-  it("6- logs an error message if deposit transaction is an error", () => {
+  it("7- logs an error message if deposit transaction is an error", () => {
     const errorMsg = "Invalid amount";
     Transaction.mockImplementation(() => {
       throw new Error(errorMsg);
@@ -53,7 +53,7 @@ describe("Block 2: Account class", () => {
       `Transaction error: ${errorMsg}`
     );
   });
-  it("7- logs an error message if withdraw transaction is an error", () => {
+  it("8- logs an error message if withdraw transaction is an error", () => {
     const errorMsg = "Insufficient funds";
     Transaction.mockImplementation(() => {
       throw new Error(errorMsg);
