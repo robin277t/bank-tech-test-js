@@ -37,9 +37,8 @@ date || credit || debit || balance
 ```
 
 ## Running the app
-- In your terminal, assuming the above installation and directory navigation: 
-- Type 'node' and press enter. This will enter you into the node REPL.
-- Type '.load Account.js' and press enter. This will load the bank app into the REPL.
+- In your terminal, navigate into the app parent folder, and then into the /src folder. 
+- Type 'node -i -e "$(< Account.js)"' This will enter you into the node REPL and load the bank account app.
 - Type 'myAccount = new Account' and press enter, which will create a new account called myAccount and allow you to use the app. It will also print out the instructions. The instructions are relevant to any account name (the 'myAccount' as above is flexible), so to follow them please prefix any function name with 'myAccount.' (or whatever name you chose).
 - If at any time you wish to see the instructions again, type 'myAccount.instructions()' Remember to prefix any functions you run with 'myAccount.' 
 - To close the app and exit the REPL, type '.exit'

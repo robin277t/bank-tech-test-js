@@ -15,7 +15,7 @@ class Account {
     this.#StatementPrinterClass = StatementPrinterClass;
     this.#transactions = [];
     this.#accountBalance = 0;
-    this.instructions()
+    this.instructions();
   }
 
   getBalance() {
@@ -36,14 +36,14 @@ class Account {
 
   printStatement() {
     const printer = new this.#StatementPrinterClass(this.#transactions);
-    printer.printTransactions();
+    return printer.printTransactions();
   }
 
   instructions() {
-    return `Your options and the inputs needed are as follows:\n
-        getBalance()\n
-        deposit(number, 'YYYY/MM/DD') --date optional, will revert to today\n
-        withdraw(number, 'YYYY/MM/DD') --date optional, will revert to today\n
+    return `Your options and the inputs needed are as follows:
+        getBalance()
+        deposit(number, 'YYYY/MM/DD') --date optional, will revert to today
+        withdraw(number, 'YYYY/MM/DD') --date optional, will revert to today
         printStatement()`;
   }
 
