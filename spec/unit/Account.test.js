@@ -64,4 +64,7 @@ describe("Block 2: Account class", () => {
       `Transaction error: ${errorMsg}`
     );
   });
+  it("9- returns instructions string", () => {
+    expect(testAccount.instructions()).toContain("--date optional, will revert")
+  })
 });

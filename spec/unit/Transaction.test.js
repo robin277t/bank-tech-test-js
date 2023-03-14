@@ -12,7 +12,6 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
       100.1,
       "2022/12/19"
     );
-    expect(testTransaction.getOpeningBalance()).toBe(1000.0);
     expect(testTransaction.getClosingBalance()).toBe(1100.1);
   });
   it("2- deposit 600.20", () => {
@@ -22,7 +21,6 @@ describe("Block 1: Transaction Class Desposit and Withdraw functions + date/amou
       600.2,
       "2022/12/19"
     );
-    expect(testTransaction.getOpeningBalance()).toBe(1000.0);
     expect(testTransaction.getClosingBalance()).toBe(1600.2);
   });
   it("3- withdraw 200.01", () => {

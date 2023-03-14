@@ -19,10 +19,6 @@ class Transaction {
     }
   }
 
-  getOpeningBalance() {
-    return this.#openingBalance;
-  }
-
   getClosingBalance() {
     return this.#closingBalance;
   }
@@ -61,6 +57,7 @@ class Transaction {
   }
 
   #dateCheck(date) {
+    //NOTE: the regex in this function checks input date is correctly formatted
     const todayDate = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
     const validDateFormat =
       /^\d{4}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/.test(date);
