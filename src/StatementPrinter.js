@@ -1,14 +1,3 @@
-// #createTransactionLogRecord(transactionInstance) {
-//   let typePrint;
-//   if (logType === "deposit") {
-//     typePrint = `${amount.toFixed(2)} || `;
-//   } else if (logType === "withdraw") {
-//     typePrint = ` || ${amount.toFixed(2)}`;
-//   }
-//   let record = `${date} || ${typePrint} || ${this.accountBalance.toFixed(2)}`;
-//   this.transactionsLog.unshift(record);
-// }
-
 class StatementPrinter {
   #transactions;
 
@@ -38,7 +27,8 @@ class StatementPrinter {
         transactionString = `${transaction.getVerifiedDate()} || ${transaction
           .getVerifiedAmount()
           .toFixed(2)} || || ${transaction.getClosingBalance().toFixed(2)}`;
-      } else if (transaction.getTransactionType() === "withdraw") {
+      }
+      if (transaction.getTransactionType() === "withdraw") {
         transactionString = `${transaction.getVerifiedDate()} || || ${transaction
           .getVerifiedAmount()
           .toFixed(2)} || ${transaction.getClosingBalance().toFixed(2)}`;

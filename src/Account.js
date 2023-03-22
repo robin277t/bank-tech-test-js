@@ -15,11 +15,11 @@ class Account {
     this.#StatementPrinterClass = StatementPrinterClass;
     this.#transactions = [];
     this.#accountBalance = 0;
-    this.instructions();
+    console.log(this.instructions());
   }
 
   getBalance() {
-    return this.#accountBalance;
+    return `£${this.#accountBalance.toFixed(2)}`;
   }
 
   getTransactions() {
@@ -55,14 +55,35 @@ class Account {
         amount,
         date
       );
-      this.#transactions.unshift(latestTransaction);
+      this.#dateOverRideChecker(latestTransaction);
+      this.#transactions.push(latestTransaction);
       if (type === "deposit") {
         this.#accountBalance += amount;
-      } else if (type === "withdraw") {
+        console.log(
+          `£${amount.toFixed(2)} credited to your account successfully`
+        );
+      }
+      if (type === "withdraw") {
         this.#accountBalance -= amount;
+        console.log(
+          `£${amount.toFixed(2)} debited from your account successfully`
+        );
       }
     } catch (error) {
       console.error(`Transaction error: ${error.message}`);
+    }
+  }
+
+  #dateOverRideChecker(latestTransaction) {
+    const tempTrans = this.getTransactions();
+    if (
+      tempTrans.length > 0 &&
+      latestTransaction.getVerifiedDate() <
+        tempTrans[tempTrans.length - 1].getVerifiedDate()
+    ) {
+      throw new Error(
+        "Can't enter a date over-ride transaction that's prior to existing transactions"
+      );
     }
   }
 }

@@ -14,7 +14,8 @@ class Transaction {
 
     if (transactionType === "deposit") {
       this.#calcDeposit(this.#verifiedAmount);
-    } else if (transactionType === "withdraw") {
+    }
+    if (transactionType === "withdraw") {
       this.#calcWithdraw(this.#verifiedAmount);
     }
   }

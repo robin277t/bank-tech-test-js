@@ -1,0 +1,37 @@
+<mxfile host="65bd71144e">
+    <diagram id="0VEIgaSHK0WaQCmv6VOp" name="Page-1">
+        <mxGraphModel dx="2259" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Class Account" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="-150" y="100" width="380" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-- Program run from this class, which contains the full user interface.&#10;-- Instantiates with default Transaction and StatementPrinter class &#10;    constructors, and a console log of instructions for the user.&#10;+ contains 'transactions' array, which is an array of transaction class &#10;    instances for valid transactions that the user has performed&#10;&#10;&#10; The below public methods are for the user:&#10;&#10;+getBalance (shows current balance)&#10;+deposit (add money)&#10;+withdraw (take away money)&#10;+getTransactions (to be able to see all activity and full details)&#10;+printStatement (see full printed statement formatted as per spec)&#10;+instructions (print instructions to console on request)&#10;&#10;The below private methods do the following:&#10;&#10;+performTransaction (takes data from withdraw and deposit functions&#10;    and creates relevant transaction instance, which (if not errored) is&#10;&#10;    added to transactions array and updates account balance&#10;&#10;&#10;+dateOverRideChecker (due to the spec requiring manual date inputs&#10;    be required when inputting transactions, this function will check that&#10;    newly entered transactions can't have a date that is prior to any&#10;    existing transactions, otherwise all balance data becomes wrong,&#10;    and would allow a user to behave with their account as not in real &#10;    life. New transactions that don't fit this criterion are rejected.&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
+                    <mxGeometry y="26" width="380" height="464" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Class Transaction" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="100" width="440" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="-- Handles individual transaction validity checking with functions:&#10;&#10;+amountCheck (if user tried not using a number or a zero)&#10;&#10;+dateCheck (to allow date over-ride, user can enter manual date transaction, &#10;    and if incorrect format entered or no date, then defaults to current timestamp&#10;&#10;+calcWithdraw (throws error if user tried to withdraw too much)&#10;&#10;-- Otherwise, class sets its internal properties and defines a bunch of getters&#10;    so that they can be seen but not changed, with names that are descriptive&#10;&#10;-- In program, class runs it's own functions automatically on instantiation&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=0" parent="6" vertex="1">
+                    <mxGeometry y="30" width="440" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Class StatementPrinter" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="370" width="440" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="-- Takes an array of transactions from 1 account on &#10;    instantiation.&#10;&#10;+ printTransactions is the one public function, this&#10;    in turn calls private functions which order the &#10;    transactions in reverse order like a bank statement,&#10;    and interrogates the getter functions for each&#10;    transaction class instance in the array and turns&#10;    them into a meaningful string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="10" vertex="1">
+                    <mxGeometry y="26" width="440" height="184" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;exitX=1.003;exitY=0.143;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=none;html=1;entryX=1.003;entryY=0.308;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.004;exitY=0.591;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=none;html=1;exitX=1.004;exitY=0.785;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
